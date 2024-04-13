@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Debug') {
             steps {
-                sh 'ls -la /var/lib/jenkins/workspace/SelfMade/'
+                sh 'ls -la /var/lib/jenkins/workspace/SelfMade/cart'
             }
         }
         // Add other stages here
