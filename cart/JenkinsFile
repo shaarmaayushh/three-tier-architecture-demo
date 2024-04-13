@@ -1,11 +1,26 @@
-pipeline {
-    agent any
-    stages {
-        stage('Debug') {
-            steps {
-                sh 'ls -la /var/lib/jenkins/workspace/SelfMade/cart'
-            }
-        }
-        // Add other stages here
+pipeline{
+  agent{
+    docker{
+      image 'node:14'
+      args '-u root'
     }
+  }
+
+  stages{
+    stage('Build'){
+      steps{
+        sh 'npm install'
+      }
+    }
+    stage('Test'){
+      steps{
+        sh 'npm test'
+      }
+    }
+    stage('Deploy'){
+      steps{
+        sh 'npm run build'
+      }
+    }
+  }
 }
