@@ -9,7 +9,10 @@ pipeline{
   stages{
     stage('Build'){
       steps{
-        sh 'npm install'
+        dir('/var/lib/jenkins/workspace/SelfMade/cart') {
+                    // Run npm test
+                    sh 'npm test'
+        }
       }
     }
     stage('Test'){
